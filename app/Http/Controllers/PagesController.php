@@ -25,4 +25,19 @@
 
             return $frieds;
         }
+
+        public function sobre() {
+            $response = array();
+
+            $response['title'] = 'About me';
+
+            $response['me'] = array(
+                'name' => 'Deivid Network',
+                'email' => 'deividnetwork@gmail.com',
+                'role' => 'Developer',
+                'phrase' => 'Never give up!'
+            );
+
+            return view('sobre', compact('response'));
+        }
     }

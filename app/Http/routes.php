@@ -11,11 +11,13 @@
     |
     */
 
-    Route::get('/', 'PagesController@index');
+    Route::get('/index', 'PagesController@index');
 
     Route::get('/amigos', 'PagesController@amigos');
 
-    Route::get('/welcome', function () {
+    Route::get('/sobre', 'PagesController@sobre');
+
+    Route::get('/', function () {
         return view('welcome');
     });
 
