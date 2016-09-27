@@ -17,7 +17,48 @@
 
     Route::get('/sobre', 'PagesController@sobre');
 
+    Route::get('/foo', function () {
+        return 'This method is the GET';
+    });
+
+    Route::post('/foo', function () {
+        return 'This method is the POST';
+    });
+
+    Route::any('/any', function () {
+        return 'This method is the any HTTP METHOD';
+    });
+
+    Route::match([
+        'post',
+        'delete'
+    ], '/math', function () {
+        return 'This method is the MATCH';
+    });
+
     Route::get('/', function () {
         return view('welcome');
     });
+
+    Route::group(['middleware' => ['web']], function () {
+        Route::get('test-middlware', function () {
+            return 'Test Middleware';
+        });
+    });
+
+    Route::group(['prefix' => 'user'], function () {
+        Route::get('list', function () {
+            return 'Users list';
+        });
+
+        Route::post('add', function () {
+            return 'Add user';
+        });
+
+        Route::get('{$id}', function ($id) {
+            return "This user is " . $id;
+        });
+    });
+
+
 
