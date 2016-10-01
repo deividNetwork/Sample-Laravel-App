@@ -11,6 +11,21 @@
     |
     */
 
+    //Simple application
+    Route::group(['prefix' => 'account'], function () {
+        Route::get('/', 'Account@index');
+
+        Route::get('{id}', 'Account@show');
+
+        Route::post('create', 'Account@create');
+
+        Route::put('{id}', 'Account@edit');
+
+        Route::delete('{id}', 'Account@destroy');
+    });
+
+
+    //Test routes
     Route::get('/index', 'PagesController@index');
 
     Route::get('/amigos', 'PagesController@amigos');
@@ -55,7 +70,7 @@
             return 'Add user';
         });
 
-        Route::get('{$id}', function ($id) {
+        Route::get('{id}', function ($id) {
             return "This user is " . $id;
         });
     });
